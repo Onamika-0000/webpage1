@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <script>
+        function validateForm() {
+            const grades = [
+                document.getElementById("subject1").value,
+                document.getElementById("subject2").value,
+                document.getElementById("subject3").value,
+                document.getElementById("subject4").value,
+                document.getElementById("subject5").value,
+                document.getElementById("subject6").value,
+            ];
+
+            for (let i = 0; i < grades.length; i++) {
+                if (grades[i] === "") {
+                    alert(`Subject ${i + 1} grade cannot be empty.`);
+                    return false;
+                }
+                if (grades[i] < 0 || grades[i] > 10) {
+                    alert(`Subject ${i + 1} grade must be between 0 and 10.`);
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>CGPA Calculator</h1>
+    <form action="result.php" method="POST" onsubmit="return validateForm()">
+        <label for="subject1">Subject 1 Grade:</label><br>
+        <input type="number" id="subject1" name="subject1" step="0.01" min="0" max="10" required><br><br>
+        
+        <label for="subject2">Subject 2 Grade:</label><br>
+        <input type="number" id="subject2" name="subject2" step="0.01" min="0" max="10" required><br><br>
+        
+        <label for="subject3">Subject 3 Grade:</label><br>
+        <input type="number" id="subject3" name="subject3" step="0.01" min="0" max="10" required><br><br>
+        
+        <label for="subject4">Subject 4 Grade:</label><br>
+        <input type="number" id="subject4" name="subject4" step="0.01" min="0" max="10" required><br><br>
+        
+        <label for="subject5">Subject 5 Grade:</label><br>
+        <input type="number" id="subject5" name="subject5" step="0.01" min="0" max="10" required><br><br>
+        
+        <label for="subject6">Subject 6 Grade:</label><br>
+        <input type="number" id="subject6" name="subject6" step="0.01" min="0" max="10" required><br><br>
+        
+        <input type="submit" value="Calculate CGPA">
+    </form>
+</body>
+</html>

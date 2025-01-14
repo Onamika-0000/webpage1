@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <script>
+        function validateForm() {
+            var name = document.forms["registrationForm"]["name"].value;
+            var id = document.forms["registrationForm"]["id"].value;
+            var course = document.forms["registrationForm"]["course"].value;
+            var phoneNumber = document.forms["registrationForm"]["phoneNumber"].value;
+            var email = document.forms["registrationForm"]["email"].value;
+            var dob = document.forms["registrationForm"]["dob"].value;
+
+            if (name == "" || id == "" || course == "" || phoneNumber == "" || email == "" || dob == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+            
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            
+            var phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phoneNumber)) {
+                alert("Please enter a valid 10-digit phone number");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    
+    <h1>Student Registration</h1>
+    <form name="registrationForm" action="view.php" method="POST" onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="id">ID:</label><br>
+        <input type="text" id="id" name="id"><br><br>
+        
+        <label for="course">Course:</label><br>
+        <input type="text" id="course" name="course"><br><br>
+        
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+        
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob"><br><br>
+        
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
